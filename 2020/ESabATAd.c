@@ -7,14 +7,14 @@ void getNextNumbers(int *k, int *num1, int *num2, int B, int *numberOfQueries) {
 	fflush(stdout); // Flush output as requested by interactive problems
 
 	scanf("%s", c); // Get 0/1 from position k+1
-	if (c[0] == 78) exit(0);
+	if (c[0] == 78) exit(-1);
 	else (*num1) = c[0] - 48; // 48 is ascii value for 0 (49 is ascii for 1)
 
 	printf("%d", B-(*k)); // Give position to get
 	fflush(stdout); // Flush output again
 	
 	scanf("%s", c); // Get 0/1 from position B-k
-	if (c[0] == 78) exit(0);
+	if (c[0] == 78) exit(-1);
 	else (*num2) = c[0] - 48; // 48 is ascii value for 0 (49 is ascii for 1)
 	
 	(*numberOfQueries) += 2; // Increase total number of queries by 2 because 2 queries were made
@@ -26,7 +26,7 @@ void getNumber(int *k, int *num1, int B, int *numberOfQueries) {
 
 	char c[2];
 	scanf("%s", c); // Get 0/1 from position k+1
-	if (c[0] == 78) exit(0);
+	if (c[0] == 78) exit(-1);
 	else (*num1) = c[0] - 48;
 	
 	(*numberOfQueries) += 1; // Increase total number of queries by 2 because 2 queries were made
