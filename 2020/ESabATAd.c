@@ -2,31 +2,35 @@
 #include<stdlib.h>
 
 void getNextNumbers(int *k, int *num1, int *num2, int B, int *numberOfQueries) {
-	char c[2];
-	printf("%d", (*k)+1); // Give position to get
+	char c[100];
+	// fprintf(stdout, "Enter a number");
+	fprintf(stdout, "%d", (*k)+1); // Give position to get
 	fflush(stdout); // Flush output as requested by interactive problems
 
-	scanf("%s", c); // Get 0/1 from position k+1
-	if (c[0] == 78) exit(0);
+	fscanf(stdin, "%[^\n]", c); // Get 0/1 from position k+1
+	getchar();
+	if (c[0] == 78) exit(-1);
 	else (*num1) = c[0] - 48; // 48 is ascii value for 0 (49 is ascii for 1)
 
-	printf("%d", B-(*k)); // Give position to get
+	fprintf(stdout, "%d", B-(*k)); // Give position to get
 	fflush(stdout); // Flush output again
 	
-	scanf("%s", c); // Get 0/1 from position B-k
-	if (c[0] == 78) exit(0);
+	fscanf(stdin, "%[^\n]", c); // Get 0/1 from position B-k
+	getchar();
+	if (c[0] == 78) exit(-1);
 	else (*num2) = c[0] - 48; // 48 is ascii value for 0 (49 is ascii for 1)
 	
 	(*numberOfQueries) += 2; // Increase total number of queries by 2 because 2 queries were made
 }
 
 void getNumber(int *k, int *num1, int B, int *numberOfQueries) {
-	printf("%d", (*k)+1); // Give position to get
+	fprintf(stdout, "%d", (*k)+1); // Give position to get
 	fflush(stdout); // Flush output as requested by interactive problems
 
 	char c[2];
-	scanf("%s", c); // Get 0/1 from position k+1
-	if (c[0] == 78) exit(0);
+	fscanf(stdin, "%[^\n]", c); // Get 0/1 from position k+1
+	getchar();
+	if (c[0] == 78) exit(-1);
 	else (*num1) = c[0] - 48;
 	
 	(*numberOfQueries) += 1; // Increase total number of queries by 2 because 2 queries were made
@@ -57,7 +61,8 @@ void fixArray(int *array, int complementation, int reversal, int B) {
 
 int main() {
 	int T, B;
-	scanf("%d %d", &T, &B); // Receive T and B
+	fscanf(stdin, "%d %d", &T, &B); // Receive T and B
+	getchar();
 	char buffer[B+1];
 	int array[B], num1, num2, k, total;
 	int samePairk, diffPairk, queries;
@@ -112,9 +117,10 @@ int main() {
 		// print elements
 		for(int p = 0; p < B; p++) buffer[p] = 48 + array[p];
 		buffer[B] = '\0';
-		printf("%s", buffer);
+		fprintf(stdout, "%s", buffer);
 		fflush(stdout);
-		scanf("%s", buffer);
+		fscanf(stdin, "%[^\n]", buffer);
+		getchar();
 		if (buffer[0] == 78) return -1;
 	}
 	return 0;
