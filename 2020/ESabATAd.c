@@ -24,10 +24,10 @@ void getNumber(int *k, int *num1, int B, int *numberOfQueries) {
 	printf("%d", (*k)+1); // Give position to get
 	fflush(stdout); // Flush output as requested by interactive problems
 
-	char c;
-	scanf("%c", &c); // Get 0/1 from position k+1
-	if (c == 78) exit(0);
-	else (*num1) = c - 48;
+	char c[2];
+	scanf("%s", c); // Get 0/1 from position k+1
+	if (c[0] == 78) exit(0);
+	else (*num1) = c[0] - 48;
 	
 	(*numberOfQueries) += 1; // Increase total number of queries by 2 because 2 queries were made
 }
